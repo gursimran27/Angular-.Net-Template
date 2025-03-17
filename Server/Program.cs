@@ -6,6 +6,7 @@ using System.Text;
 using Server.Data;
 using Server.Services;
 using Server.Interfaces;
+using Server.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -86,6 +87,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<LoggingMiddleware>();
 app.UseHttpsRedirection();
 
 // Enable CORS middleware
